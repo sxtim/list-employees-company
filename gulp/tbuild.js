@@ -6,6 +6,8 @@ const plumber = require("gulp-plumber")
 const rigger = require("gulp-rigger")
 const uglify = require("gulp-uglify")
 const autoprefixer = require("gulp-autoprefixer")
+const webpack = require("webpack-stream")
+const webpackConfig = require("../webpack.config.js")
 
 function build(cb) {
 	gulp.src("../src/js/lib/**").pipe(gulp.dest("../dist/assets/js"))
@@ -32,9 +34,9 @@ function build(cb) {
 	gulp.src(["../src/*.html"]).pipe(plumber()).pipe(gulp.dest("../dist/"))
 
 	gulp
-		.src(["../src/js/*.js"])
-		.pipe(rigger())
-		.pipe(uglify())
+		.src(["../src/js/app.js"])
+		.pipe(plumber())
+		.pipe(webpack(webpackConfig))
 		.pipe(gulp.dest("../dist/assets/js"))
 
 	cb()

@@ -1,0 +1,22 @@
+# Игнорируем зависимости, которые будут установлены внутри контейнера
+node_modules
+
+# Игнорируем папки со сборками
+dist
+build
+
+# Игнорируем системные файлы Git
+.git
+.gitignore
+
+# Игнорируем файлы Docker, они не нужны внутри образа
+.dockerignore
+Dockerfile
+
+# Логи и временные файлы npm
+npm-debug.log
+npm-debug.log*
+
+# Файлы IDE
+.vscode
+.idea 
